@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MemoryGame
 {
@@ -32,15 +28,12 @@ namespace MemoryGame
                     cards.Add(new Card(face, suit));
                 }
             }
-
             return cards;
         }
 
         public override string ToString()
         {
             return face.ToString() + "_"+suit.ToString();
-            
-            //return face.ToString() + " of " + suit.ToString();
         }
     }
 }

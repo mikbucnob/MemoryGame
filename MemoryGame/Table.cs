@@ -1,19 +1,8 @@
 ﻿using System;
-using System.Resources;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Diagnostics;
 using System.Drawing;
-using System.IO;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using DataStructures;
-using MemoryGame.Properties;
 
 namespace MemoryGame
 {
@@ -33,18 +22,11 @@ namespace MemoryGame
             InitializeComponent();
             imageMap=new HashMap<int, Image>();
             model = new Model(this);
-            //todo: adds entry to map
-            //this method takes an integer and string
-            //int comes from deck index
-            //string cards tostring
-            //use image string to load image file
-
         }
 
         private void cardOnTable_Click(object sender, EventArgs e)
         {
             int cardNumber = ((int)((Control)sender).TabIndex);
-
 
             if (sender == sender2 || sender == sender1)
                 return;
@@ -69,17 +51,10 @@ namespace MemoryGame
             if (!model.FirstTurn)
             {
                 model.Counter++;
-                // model.GameLogic(sender1, sender2);
+                moveCounter.Text = model.Counter + " moves";
             }
 
             model.FirstTurn = !model.FirstTurn;
-
-
-
-            //todo:if two cards don't match turn them back around
-            //display turns taken
-            //detect when game is finished and say well done
-
         }
 
         private void DisplayCardFace(object sender, int cardNumber)
@@ -105,8 +80,9 @@ namespace MemoryGame
                 //two ways to get Image file
                 //Stream s = assembly.GetManifestResourceStream("MemoryGame.Resources." + fileName + ".jpg");
                 //Image fileTester = Image.FromStream(s);
-
+                //OR
                 Image fileTester = MemoryGame.Properties.Resources.ResourceManager.GetObject(fileName) as Bitmap;
+
                 imageMap.Add(index, fileTester);
             }
             catch (Exception e)
@@ -118,22 +94,17 @@ namespace MemoryGame
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FileWrite filing=new FileWrite(model,this);
-            //save menu option
         }
 
         private void loadToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FileRead filing = new FileRead(model, this);
-            //load menu option
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //exit menu option
             this.Close();
         }
         
     }
-
-
 }

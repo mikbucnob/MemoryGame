@@ -1,9 +1,4 @@
-﻿using System;
-using System.IO;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.IO;
 using System.Windows.Forms;
 
 namespace MemoryGame
@@ -21,8 +16,8 @@ namespace MemoryGame
         {
             using (BinaryWriter writer = new BinaryWriter(File.Open(fileName, FileMode.Create)))
             {
-                writer.Write(model.Counter);//int
-                writer.Write(model.pairsFound);//int
+                writer.Write(model.Counter);
+                writer.Write(model.pairsFound);
                 for (int i = 0; i < 52; i++)
                 {
                     writer.Write((int)model.deck[i].face);
@@ -30,9 +25,8 @@ namespace MemoryGame
                 }
                 foreach (Control control in table.Controls)
                 {
-                    if (control.TabIndex < 52)
+                    if ((control as PictureBox) != null)
                         writer.Write(((PictureBox)control).Visible);
-                        
                 }
             }
         }

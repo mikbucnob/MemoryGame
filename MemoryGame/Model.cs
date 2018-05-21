@@ -1,14 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
+﻿
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Windows.Forms.VisualStyles;
-using DataStructures;
 
 namespace MemoryGame
 {
@@ -37,25 +29,11 @@ namespace MemoryGame
             {
                 table.PlaceCard(index, deck[index].ToString());
             }
-            //todo: adds entry to map
-            //this method takes an integer and string
-            //int comes from deck index
-            //string cards tostring
-            //use image string to load image file
-
         }
 
         public void MatchFoundBox()
         {
-
             MessageBox.Show("Found Match");
-        }
-
-        private bool SwapTurn()
-        {
-
-            return ((FirstTurn) ? false : true);
-
         }
 
         public void GameLogic(object sender1, object sender2)
@@ -64,7 +42,6 @@ namespace MemoryGame
             {
                 if ((deck[table.choice1] == deck[table.choice2]))
                 {
-                    //table.TurnBackCards();
                     return;
                 }
             }
@@ -78,43 +55,24 @@ namespace MemoryGame
                 ((PictureBox)sender1).Visible = false;
                 ((PictureBox)sender2).Visible = false;
             }
-            else //if ((Counter > 0) && (FirstTurn))
+            else
             {
                 table.Enabled = false;
                 Thread.Sleep(1500);
                 table.TurnBackCards();
                 table.Enabled = true;
                 table.choice2 = -1;
-
             }
 
             if (pairsFound == 26)
             {
                 GameEnds();
             }
-
-            //if first turn skip
-            //if second & not pair found leave
-            //if second & pair found take visability
-            /* else if ((isFirstTurn)&&(sender2!=null))
-             {
-                 ((PictureBox)sender1).Image = MemoryGame.Properties.Resources.backcard;
-                 ((PictureBox)sender2).Image = MemoryGame.Properties.Resources.backcard;
-             }*/
-
-            //}
-
-            /*(bothFound) (Counter != 0){
-                
-            }*/
         }
-
-
-        /*  
-        }*/
-
+        
         private void GameEnds()
         {
+            Counter++;
             MessageBox.Show("All Pairs Found, Well Done\nTook " + Counter + " Moves");
         }
 

@@ -86,6 +86,7 @@
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.moveCounter = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.cardOnTable0)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cardOnTable1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cardOnTable2)).BeginInit();
@@ -742,23 +743,34 @@
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(117, 26);
             this.saveToolStripMenuItem.Text = "Save";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
             // loadToolStripMenuItem
             // 
             this.loadToolStripMenuItem.Name = "loadToolStripMenuItem";
-            this.loadToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.loadToolStripMenuItem.Size = new System.Drawing.Size(117, 26);
             this.loadToolStripMenuItem.Text = "Load";
             this.loadToolStripMenuItem.Click += new System.EventHandler(this.loadToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(117, 26);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
+            // 
+            // moveCounter
+            // 
+            this.moveCounter.AutoSize = true;
+            this.moveCounter.BackColor = System.Drawing.Color.Ivory;
+            this.moveCounter.Font = new System.Drawing.Font("Arial", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.moveCounter.Location = new System.Drawing.Point(947, 648);
+            this.moveCounter.Name = "moveCounter";
+            this.moveCounter.Size = new System.Drawing.Size(128, 33);
+            this.moveCounter.TabIndex = 53;
+            this.moveCounter.Text = "0 moves";
             // 
             // Table
             // 
@@ -766,6 +778,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Green;
             this.ClientSize = new System.Drawing.Size(1143, 748);
+            this.Controls.Add(this.moveCounter);
             this.Controls.Add(this.cardOnTable51);
             this.Controls.Add(this.cardOnTable50);
             this.Controls.Add(this.cardOnTable49);
@@ -943,6 +956,7 @@
         private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem loadToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
+        private System.Windows.Forms.Label moveCounter;
     }
 }
 
