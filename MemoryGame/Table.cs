@@ -66,9 +66,15 @@ namespace MemoryGame
         {
             foreach (Control control in Controls)
             {
-                if( (control as PictureBox) != null)
-                    ((PictureBox)control).Image = MemoryGame.Properties.Resources.backcard;
+                int i = 0;
+                if ((control as PictureBox) != null)
+                {
+                    ((PictureBox) control).Image = MemoryGame.Properties.Resources.backcard;
+                    i++;
+                }
             }
+
+            moveCounter.Text = model.Counter + " moves";
         }
 
 
@@ -77,10 +83,10 @@ namespace MemoryGame
             var assembly = Assembly.GetExecutingAssembly();
             try
             {
-                //two ways to get Image file
+                //***two ways to get Image file***
                 //Stream s = assembly.GetManifestResourceStream("MemoryGame.Resources." + fileName + ".jpg");
                 //Image fileTester = Image.FromStream(s);
-                //OR
+                //***OR***
                 Image fileTester = MemoryGame.Properties.Resources.ResourceManager.GetObject(fileName) as Bitmap;
 
                 imageMap.Add(index, fileTester);

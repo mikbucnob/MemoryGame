@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using System.Windows.Forms;
 
 namespace MemoryGame
 {
@@ -17,14 +18,14 @@ namespace MemoryGame
             {
                 using (BinaryReader reader = new BinaryReader(File.Open(fileName, FileMode.Open)))
                 {
-                    model.Counter = reader.ReadInt32();
-                    model.pairsFound = reader.ReadInt32();
+                    model.Counter = reader.ReadInt32();//works
+                    model.pairsFound = reader.ReadInt32();//works
                     for (int i = 0; i < 52; i++)
                     {
                         model.deck[i].face = (Card.Face)reader.ReadInt32();
                         model.deck[i].suit = (Card.Suit)reader.ReadInt32();
                     }
-
+                    
                     for (int i = 0; i < 52; i++)
                     {
                         table.Controls[i].Visible = reader.ReadBoolean();
