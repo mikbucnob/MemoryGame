@@ -839,6 +839,7 @@
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Table";
+            this.Load += new System.EventHandler(this.Table_Load);
             ((System.ComponentModel.ISupportInitialize)(this.cardOnTable0)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cardOnTable1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cardOnTable2)).EndInit();

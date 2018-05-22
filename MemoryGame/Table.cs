@@ -107,6 +107,11 @@ namespace MemoryGame
             FileRead filing = new FileRead(model, this);
         }
 
+        private void Table_Load(object sender, EventArgs e)
+        {
+
+        }
+
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
