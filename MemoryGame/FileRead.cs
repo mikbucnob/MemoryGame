@@ -1,5 +1,4 @@
 ﻿using System.IO;
-using System.Windows.Forms;
 
 namespace MemoryGame
 {
@@ -9,10 +8,10 @@ namespace MemoryGame
 
         public FileRead(Model model, Table table)
         {
-            ReadBinaryValues(model, table);
+            ReadBinaryData(model, table);
         }
 
-        public static void ReadBinaryValues(Model model, Table table)
+        public void ReadBinaryData(Model model, Table table)
         {
             if (File.Exists(fileName))
             {

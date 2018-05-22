@@ -26,9 +26,7 @@ namespace MemoryGame
             }
             Console.ReadLine();
         }
-
         
-
         public void Shuffle()
         {
             Random random = new Random();

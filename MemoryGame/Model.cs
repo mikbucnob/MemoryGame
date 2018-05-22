@@ -11,7 +11,6 @@ namespace MemoryGame
         public bool FirstTurn = true;
         public int pairsFound = 0;
 
-        public bool bothChosen = false;
         public int counter;
         public int Counter
         {
@@ -48,7 +47,6 @@ namespace MemoryGame
 
             if ((!FirstTurn) && (MatchFound(table.choice1, table.choice2)))
             {
-
                 MatchFoundBox();
                 pairsFound++;
                 Thread.Sleep(500);
@@ -79,8 +77,6 @@ namespace MemoryGame
 
         private bool MatchFound(int choice1, int choice2)
         {
-
-
             if (deck[choice1].face == deck[choice2].face)
             {
                 return true;

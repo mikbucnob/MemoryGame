@@ -9,10 +9,10 @@ namespace MemoryGame
 
         public FileWrite(Model model,Table table)
         {
-            WriteBinaryValues(model,table);
+            WriteBinaryData(model,table);
         }
 
-        public void WriteBinaryValues(Model model,Table table)
+        public void WriteBinaryData(Model model,Table table)
         {
             using (BinaryWriter writer = new BinaryWriter(File.Open(fileName, FileMode.Create)))
             {
