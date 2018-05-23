@@ -9,6 +9,7 @@ namespace MemoryGame
     public partial class Table : Form
     {
         public Model model;
+        //public Client client;
 
         private PictureBox firstChosen = null;
         public int choice1 = -1;
@@ -21,20 +22,21 @@ namespace MemoryGame
         {
             InitializeComponent();
             imageMap=new HashMap<int, Image>();
-            model = new Model(this);
+            model = new Model(this);//client connect to server
         }
 
         private void cardOnTable_Click(object sender, EventArgs e)
-        {
+        {//server sent message (get card number, client save message then done)
             int cardNumber = ((int)((Control)sender).TabIndex);
-
+            int cardNumber2
+                //clicked on card number 13, server said ok and turn card over
             if (sender == sender2 || sender == sender1)
                 return;
 
             DisplayCardFace(sender, cardNumber);
             this.Refresh();
 
-            if (model.FirstTurn)
+            if (model.FirstTurn)//if to server is it the firstturn
             {
                 sender1 = sender;
                 choice1 = cardNumber;
@@ -43,13 +45,13 @@ namespace MemoryGame
             {
                 sender2 = sender;
                 choice2 = cardNumber;
-                model.GameLogic(sender1, sender2);
+                model.GameLogic();//
                 sender1 = -1;
                 sender2 = -1;
             }
 
-            if (!model.FirstTurn)
-            {
+            if (!model.FirstTurn)//same thing
+            {//Counter should be private
                 model.Counter++;
                 moveCounter.Text = model.Counter + " moves";
             }
@@ -74,7 +76,7 @@ namespace MemoryGame
                 }
             }
 
-            moveCounter.Text = model.Counter + " moves";
+            moveCounter.Text = model.Counter + " moves";//model, store a local variable for moves
         }
 
 
@@ -88,7 +90,7 @@ namespace MemoryGame
                 //Image fileTester = Image.FromStream(s);
                 //***OR***
                 Image fileTester = MemoryGame.Properties.Resources.ResourceManager.GetObject(fileName) as Bitmap;
-
+                //tell client open this file,server shouldnt know anything about image
                 imageMap.Add(index, fileTester);
             }
             catch (Exception e)
@@ -99,12 +101,12 @@ namespace MemoryGame
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FileWrite filing=new FileWrite(model,this);
+            FileWrite filing=new FileWrite(model,this);//saving server side
         }
 
         private void loadToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FileRead filing = new FileRead(model, this);
+            FileRead filing = new FileRead(model, this);//reading server side
         }
 
         private void Table_Load(object sender, EventArgs e)
@@ -114,7 +116,7 @@ namespace MemoryGame
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.Close();
+            this.Close();//shut down client first,then close
         }
         
     }

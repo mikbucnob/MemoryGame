@@ -1,4 +1,5 @@
 ﻿
+using System.Runtime.Remoting.Channels;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -8,6 +9,8 @@ namespace MemoryGame
     {
         private Table table;
         public Deck<Card> deck;
+        //public Server server;
+
         public bool FirstTurn = true;
         public int pairsFound = 0;
 
@@ -26,7 +29,7 @@ namespace MemoryGame
             deck.Shuffle();
             for (int index = 0; index <= 51; index++)
             {
-                table.PlaceCard(index, deck[index].ToString());
+                table.PlaceCard(index, deck[index].ToString());//send message 
             }
         }
 
@@ -47,18 +50,16 @@ namespace MemoryGame
 
             if ((!FirstTurn) && (MatchFound(table.choice1, table.choice2)))
             {
-                MatchFoundBox();
+                MatchFoundBox();//table
                 pairsFound++;
-                Thread.Sleep(500);
-                ((PictureBox)sender1).Visible = false;
-                ((PictureBox)sender2).Visible = false;
+                
             }
             else
             {
-                table.Enabled = false;
-                Thread.Sleep(1500);
-                table.TurnBackCards();
-                table.Enabled = true;
+                table.Enabled = false;//green ones table
+                Thread.Sleep(1500);//
+                table.TurnBackCards();//
+                table.Enabled = true;//
                 table.choice2 = -1;
             }
 
