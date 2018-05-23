@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using System.Windows.Forms;
 
 namespace MemoryGame
 {
@@ -24,10 +25,11 @@ namespace MemoryGame
                         model.deck[i].face = (Card.Face)reader.ReadInt32();
                         model.deck[i].suit = (Card.Suit)reader.ReadInt32();
                     }
-                    
-                    for (int i = 0; i < 52; i++)
+
+                    foreach (Control control in table.Controls)
                     {
-                        table.Controls[i].Visible = reader.ReadBoolean();
+                        if ((control as PictureBox) != null)
+                            control.Visible = reader.ReadBoolean();
                     }
 
                     table.TurnBackCards();

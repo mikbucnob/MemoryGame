@@ -100,22 +100,16 @@ namespace MemoryGame
             int j = 0;
             for (int i = 0; i < theArray.Length; i++)
             {
-
                 // if (theArray[i].Equals(default(T))) // how to use generics here
-
 
                 if (!object.Equals(temp, theArray[i]))
                 {
                     newArray[j] = theArray[i];
                     j++;
                 }
-
-
             }
 
             theArray = newArray;
-
-
         }
 
         public IEnumerator<T> GetEnumerator()
