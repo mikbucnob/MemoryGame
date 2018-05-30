@@ -22,7 +22,7 @@ namespace MemoryGame
         {
             InitializeComponent();
             imageMap=new HashMap<int, Image>();
-            model = new Model(this);//client connect to server
+            //client connect to server
         }
 
         private void cardOnTable_Click(object sender, EventArgs e)
@@ -50,11 +50,7 @@ namespace MemoryGame
                 sender2 = -1;
             }
 
-            if (!model.FirstTurn)//same thing
-            {//Counter should be private
-                model.Counter++;
-                moveCounter.Text = model.Counter + " moves";
-            }
+            moveCounter.Text = model.MovesLabelUpdate();
 
             model.FirstTurn = !model.FirstTurn;
         }
@@ -76,7 +72,7 @@ namespace MemoryGame
                 }
             }
 
-            moveCounter.Text = model.Counter + " moves";//model, store a local variable for moves
+            moveCounter.Text = model.MovesLabelUpdate();
         }
 
 

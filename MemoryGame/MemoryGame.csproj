@@ -47,16 +47,19 @@
   <ItemGroup>
     <Compile Include="ArrayList.cs" />
     <Compile Include="Card.cs" />
+    <Compile Include="Client.cs" />
     <Compile Include="Deck.cs" />
     <Compile Include="FileRead.cs" />
     <Compile Include="FileWrite.cs" />
     <Compile Include="HashMap.cs" />
+    <Compile Include="Messages.cs" />
     <Compile Include="Model.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Server.cs" />
     <Compile Include="Table.cs">
       <SubType>Form</SubType>
     </Compile>

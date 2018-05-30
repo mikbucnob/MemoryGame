@@ -7,60 +7,64 @@ namespace MemoryGame
 {
     public class Model
     {
-        private Table table;
+        //private Table table; needs to go through server
         public Deck<Card> deck;
-        //public Server server;
+        public Server server;
 
         public bool FirstTurn = true;
         public int pairsFound = 0;
+        private int choice1, choice2 = -1;
 
-        public int counter;
-        public int Counter
+        private int moves;
+        private int Moves
         {
-            get { return counter; }
-            set { counter = value; }
+            get { return moves; }
+            set { moves = value; }
         }
 
-        public Model(Table table)
+        public Model(Server server)
         {
-            Counter = 0;
-            this.table = table;
+            this.server = server;
+            Moves = 0;
             deck = new Deck<Card>(Card.CreateDeck());
             deck.Shuffle();
-            for (int index = 0; index <= 51; index++)
-            {
-                table.PlaceCard(index, deck[index].ToString());//send message 
-            }
+            //must be build in constructor, put rest into method
+            
         }
 
-        public void MatchFoundBox()
+        public void StartGame()
         {
-            MessageBox.Show("Found Match");
+            for (int index = 0; index <= 51; index++)
+            {
+                server.Send(new PlaceCardMessage(index,deck[index].ToString()));
+            }
+            
         }
 
         public void GameLogic(object sender1, object sender2)
         {
-            if (table.choice2 != -1)
+            if (choice2 != -1)
             {
-                if ((deck[table.choice1] == deck[table.choice2]))
+                if ((deck[choice1] == deck[choice2]))
                 {
                     return;
                 }
             }
 
-            if ((!FirstTurn) && (MatchFound(table.choice1, table.choice2)))
+            if ((!FirstTurn) && (MatchFound(choice1, choice2)))
             {
-                MatchFoundBox();//table
+                //MatchFoundBox();//tell client match found
                 pairsFound++;
                 
             }
             else
             {
-                table.Enabled = false;//green ones table
+                /*table.Enabled = false;//table; will send message to client
+                 tell client to turn cards back*/
                 Thread.Sleep(1500);//
                 table.TurnBackCards();//
-                table.Enabled = true;//
-                table.choice2 = -1;
+                table.Enabled = true;//*/
+                choice2 = -1;
             }
 
             if (pairsFound == 26)
@@ -68,11 +72,21 @@ namespace MemoryGame
                 GameEnds();
             }
         }
-        
-        private void GameEnds()
+
+        public string MovesLabelUpdate()
         {
-            Counter++;
-            MessageBox.Show("All Pairs Found, Well Done\nTook " + Counter + " Moves");
+            if (FirstTurn) //same thing
+            {
+                Moves++;
+            }
+            return Moves + " moves";
+        }
+        
+
+    private void GameEnds()
+        {
+            Moves++;
+            MessageBox.Show("All Pairs Found, Well Done\nTook " + Moves + " Moves");
         }
 
 
