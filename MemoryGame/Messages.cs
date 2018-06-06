@@ -21,4 +21,12 @@ namespace MemoryGame
             this.filename = filename;
         }
     }
+
+    public class MatchMessage : Message
+    {
+    }
+
+    public class NotMatchMessage : Message
+    {
+    }
 }

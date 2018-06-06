@@ -9,7 +9,7 @@ namespace MemoryGame
     {
         //private Table table; needs to go through server
         public Deck<Card> deck;
-        public Server server;
+        public Server server;//model on server side
 
         public bool FirstTurn = true;
         public int pairsFound = 0;
@@ -53,18 +53,16 @@ namespace MemoryGame
 
             if ((!FirstTurn) && (MatchFound(choice1, choice2)))
             {
-                //MatchFoundBox();//tell client match found
+                server.Send(new MatchMessage());
+                //tell client match found
                 pairsFound++;
                 
             }
             else
             {
+                server.Send(new NotMatchMessage());
                 /*table.Enabled = false;//table; will send message to client
                  tell client to turn cards back*/
-                Thread.Sleep(1500);//
-                table.TurnBackCards();//
-                table.Enabled = true;//*/
-                choice2 = -1;
             }
 
             if (pairsFound == 26)
@@ -75,11 +73,12 @@ namespace MemoryGame
 
         public string MovesLabelUpdate()
         {
-            if (FirstTurn) //same thing
+            if (FirstTurn) 
             {
                 Moves++;
             }
-            return Moves + " moves";
+            server.Send(new UpdateMoveLabel(Moves));
+            
         }
         
 
@@ -103,4 +102,6 @@ namespace MemoryGame
         }
 
     }
+
+    
 }
