@@ -82,10 +82,11 @@ namespace MemoryGame
         }
         
 
-    private void GameEnds()
+        private void GameEnds()
         {
             Moves++;
             MessageBox.Show("All Pairs Found, Well Done\nTook " + Moves + " Moves");
+            //should be in table
         }
 
 
@@ -102,6 +103,5 @@ namespace MemoryGame
         }
 
     }
-
     
 }

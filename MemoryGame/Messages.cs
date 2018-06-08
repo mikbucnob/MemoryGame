@@ -29,4 +29,14 @@ namespace MemoryGame
     public class NotMatchMessage : Message
     {
     }
+
+    public class UpdateMoveLabel : Message
+    {
+        private int moves;
+
+        public UpdateMoveLabel(int moves)
+        {
+            this.moves = moves;
+        }
+    }
 }

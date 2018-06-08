@@ -16,7 +16,7 @@ namespace MemoryGame
         {
             using (BinaryWriter writer = new BinaryWriter(File.Open(fileName, FileMode.Create)))
             {
-                writer.Write(model.Counter);
+                writer.Write(model.Moves);
                 writer.Write(model.pairsFound);
                 for (int i = 0; i < 52; i++)
                 {

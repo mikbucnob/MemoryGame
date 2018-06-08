@@ -18,8 +18,8 @@ namespace MemoryGame
             {
                 using (BinaryReader reader = new BinaryReader(File.Open(fileName, FileMode.Open)))
                 {
-                    model.Counter = reader.ReadInt32();//works
-                    model.pairsFound = reader.ReadInt32();//works
+                    model.Moves = reader.ReadInt32();
+                    model.pairsFound = reader.ReadInt32();
                     for (int i = 0; i < 52; i++)
                     {
                         model.deck[i].face = (Card.Face)reader.ReadInt32();
