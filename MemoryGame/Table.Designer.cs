@@ -88,10 +88,10 @@
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.colorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.changeBackgroundColourToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.moveCounter = new System.Windows.Forms.Label();
             this.redToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.greenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.blackToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.moveCounter = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.cardOnTable0)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cardOnTable1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cardOnTable2)).BeginInit();
@@ -785,6 +785,27 @@
             this.changeBackgroundColourToolStripMenuItem.Size = new System.Drawing.Size(265, 26);
             this.changeBackgroundColourToolStripMenuItem.Text = "Change Background Colour";
             // 
+            // redToolStripMenuItem
+            // 
+            this.redToolStripMenuItem.Name = "redToolStripMenuItem";
+            this.redToolStripMenuItem.Size = new System.Drawing.Size(123, 26);
+            this.redToolStripMenuItem.Text = "Red";
+            this.redToolStripMenuItem.Click += new System.EventHandler(this.redToolStripMenuItem_Click);
+            // 
+            // greenToolStripMenuItem
+            // 
+            this.greenToolStripMenuItem.Name = "greenToolStripMenuItem";
+            this.greenToolStripMenuItem.Size = new System.Drawing.Size(123, 26);
+            this.greenToolStripMenuItem.Text = "Green";
+            this.greenToolStripMenuItem.Click += new System.EventHandler(this.greenToolStripMenuItem_Click);
+            // 
+            // blackToolStripMenuItem
+            // 
+            this.blackToolStripMenuItem.Name = "blackToolStripMenuItem";
+            this.blackToolStripMenuItem.Size = new System.Drawing.Size(123, 26);
+            this.blackToolStripMenuItem.Text = "Black";
+            this.blackToolStripMenuItem.Click += new System.EventHandler(this.blackToolStripMenuItem_Click);
+            // 
             // moveCounter
             // 
             this.moveCounter.AutoSize = true;
@@ -795,27 +816,6 @@
             this.moveCounter.Size = new System.Drawing.Size(128, 33);
             this.moveCounter.TabIndex = 53;
             this.moveCounter.Text = "0 moves";
-            // 
-            // redToolStripMenuItem
-            // 
-            this.redToolStripMenuItem.Name = "redToolStripMenuItem";
-            this.redToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
-            this.redToolStripMenuItem.Text = "Red";
-            this.redToolStripMenuItem.Click += new System.EventHandler(this.redToolStripMenuItem_Click);
-            // 
-            // greenToolStripMenuItem
-            // 
-            this.greenToolStripMenuItem.Name = "greenToolStripMenuItem";
-            this.greenToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
-            this.greenToolStripMenuItem.Text = "Green";
-            this.greenToolStripMenuItem.Click += new System.EventHandler(this.greenToolStripMenuItem_Click);
-            // 
-            // blackToolStripMenuItem
-            // 
-            this.blackToolStripMenuItem.Name = "blackToolStripMenuItem";
-            this.blackToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
-            this.blackToolStripMenuItem.Text = "Black";
-            this.blackToolStripMenuItem.Click += new System.EventHandler(this.blackToolStripMenuItem_Click);
             // 
             // Table
             // 
@@ -885,6 +885,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Table";
             this.Load += new System.EventHandler(this.Table_Load);
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.Table_Paint);
             ((System.ComponentModel.ISupportInitialize)(this.cardOnTable0)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cardOnTable1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cardOnTable2)).EndInit();

@@ -11,6 +11,7 @@ namespace MemoryGame
         public Model model;
         //public Client client;
 
+        private Graphics g;
         private PictureBox firstChosen = null;
         public int choice1 = -1;
         public int choice2 = -1;
@@ -105,13 +106,16 @@ namespace MemoryGame
             FileRead filing = new FileRead(model, this);//reading server side
         }
 
+
+
         private void Table_Load(object sender, EventArgs e)
         {
-
+            
         }
 
         private void redToolStripMenuItem_Click(object sender, EventArgs e)
         {
+
             this.BackColor = System.Drawing.Color.Red;
         }
 
@@ -123,6 +127,18 @@ namespace MemoryGame
         private void blackToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.BackColor = System.Drawing.Color.Black;
+        }
+
+        private void drawLineRedToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //g.DrawLine(new Pen(new SolidBrush(Color.Red)), 0, 0, 100, 100);
+            Pen pen = new Pen(Color.Red);
+            g.DrawLine(pen, 0, 0, 100, 100);
+        }
+
+        private void Table_Paint(object sender, PaintEventArgs e)
+        {
+            g = e.Graphics;
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
