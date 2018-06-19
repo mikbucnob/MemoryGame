@@ -823,7 +823,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.Green;
-            this.ClientSize = new System.Drawing.Size(1143, 748);
+            this.ClientSize = new System.Drawing.Size(1143, 721);
             this.Controls.Add(this.moveCounter);
             this.Controls.Add(this.cardOnTable51);
             this.Controls.Add(this.cardOnTable50);

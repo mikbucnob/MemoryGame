@@ -16,7 +16,7 @@ namespace MemoryGame
         private int choice1, choice2 = -1;
 
         private int moves;
-        private int Moves
+        public int Moves
         {
             get { return moves; }
             set { moves = value; }
@@ -29,58 +29,73 @@ namespace MemoryGame
             deck = new Deck<Card>(Card.CreateDeck());
             deck.Shuffle();
             //must be build in constructor, put rest into method
-            
+
         }
 
         public void StartGame()
         {
             for (int index = 0; index <= 51; index++)
             {
-                server.Send(new PlaceCardMessage(index,deck[index].ToString()));
+                server.Send(new PlaceCardMessage(index, deck[index].ToString()));
             }
-            
+
         }
 
-        public void GameLogic(object sender1, object sender2)
-        {
-            if (choice2 != -1)
-            {
-                if ((deck[choice1] == deck[choice2]))
-                {
-                    return;
-                }
-            }
 
-            if ((!FirstTurn) && (MatchFound(choice1, choice2)))
+
+        public void Move(int cardClickedOn)
+        {
+            //
+            if (FirstTurn)
             {
-                server.Send(new MatchMessage());
-                //tell client match found
-                pairsFound++;
-                
+                //flip over card
+                //store in class variable
             }
             else
             {
-                server.Send(new NotMatchMessage());
-                /*table.Enabled = false;//table; will send message to client
-                 tell client to turn cards back*/
-            }
+                //flip over card and check for match
+                //is match Match message
+                //not match NotMatch one
+                //send a flipCard for both class variable and card chosen selected cards
+                //check for game finished as last thing
+                if ((!FirstTurn) && (MatchFound(choice1, choice2)))
+                {
+                    server.Send(new MatchMessage());
+                    //tell client match found
+                    pairsFound++;
 
-            if (pairsFound == 26)
-            {
-                GameEnds();
+                }
+                else
+                {
+                    server.Send(new NotMatchMessage());
+                    /*table.Enabled = false;//table; will send message to client
+                     tell client to turn cards back*/
+                }
+
+                if (choice1 != choice2)
+                {
+
+                }
+
+                if (pairsFound == 26)
+                {
+                    GameEnds();
+                }
+
             }
+            FirstTurn = !FirstTurn;
         }
 
         public string MovesLabelUpdate()
         {
-            if (FirstTurn) 
+            if (FirstTurn)
             {
                 Moves++;
             }
             server.Send(new UpdateMoveLabel(Moves));
-            
+
         }
-        
+
 
         private void GameEnds()
         {
@@ -103,5 +118,5 @@ namespace MemoryGame
         }
 
     }
-    
+
 }

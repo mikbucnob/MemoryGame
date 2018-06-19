@@ -8,8 +8,8 @@ namespace MemoryGame
 {
     public partial class Table : Form
     {
-        public Model model;
-        //public Client client;
+        //no model reference directly
+        public Client client;
 
         private Graphics g;
         private PictureBox firstChosen = null;
@@ -29,12 +29,10 @@ namespace MemoryGame
         private void cardOnTable_Click(object sender, EventArgs e)
         {//server sent message (get card number, client save message then done)
             int cardNumber = ((int)((Control)sender).TabIndex);
-            int cardNumber2
+            client.Send(new SelectCard(cardNumber));
                 //clicked on card number 13, server said ok and turn card over
-            if (sender == sender2 || sender == sender1)
-                return;
-
-            DisplayCardFace(sender, cardNumber);
+            
+            //DisplayCardFace(sender, cardNumber); responds to server
             this.Refresh();
 
             if (model.FirstTurn)//if to server is it the firstturn
@@ -53,7 +51,7 @@ namespace MemoryGame
 
             moveCounter.Text = model.MovesLabelUpdate();
 
-            model.FirstTurn = !model.FirstTurn;
+            
         }
 
         private void DisplayCardFace(object sender, int cardNumber)
@@ -76,10 +74,9 @@ namespace MemoryGame
             moveCounter.Text = model.MovesLabelUpdate();
         }
 
-
         public void PlaceCard(int index, string fileName)
         {
-            var assembly = Assembly.GetExecutingAssembly();
+            //var assembly = Assembly.GetExecutingAssembly();
             try
             {
                 //***two ways to get Image file***
@@ -105,8 +102,6 @@ namespace MemoryGame
         {
             FileRead filing = new FileRead(model, this);//reading server side
         }
-
-
 
         private void Table_Load(object sender, EventArgs e)
         {

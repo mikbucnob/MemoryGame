@@ -78,17 +78,10 @@ namespace MemoryGame
         {
 
             T temp = default(T);
-            //theArray = theArray.Except(new T[] { temp }).ToArray();
-            //return;
-            // https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/default-values-table
-
+            
             int count = 0;
             for (int i = 0; i < theArray.Length; i++)
             {
-
-                // if (theArray[i].Equals(default(T))) // how to use generics here
-
-
                 if (!object.Equals(temp, theArray[i]))
                 {
                     count++;
@@ -100,8 +93,6 @@ namespace MemoryGame
             int j = 0;
             for (int i = 0; i < theArray.Length; i++)
             {
-                // if (theArray[i].Equals(default(T))) // how to use generics here
-
                 if (!object.Equals(temp, theArray[i]))
                 {
                     newArray[j] = theArray[i];

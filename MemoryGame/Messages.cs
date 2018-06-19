@@ -39,4 +39,24 @@ namespace MemoryGame
             this.moves = moves;
         }
     }
+
+    public class FlipCard : Message
+    {
+        private int cardToFlip;
+
+        public FlipCard(int cardNumber)
+        {
+            cardToFlip = cardNumber;
+        }
+    }
+
+    public class SelectCard : Message
+    {
+        private int cardSelect;
+
+        public SelectCard(int selectCard)
+        {
+            cardSelect = selectCard;
+        }
+    }
 }

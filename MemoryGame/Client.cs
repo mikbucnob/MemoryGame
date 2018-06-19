@@ -8,5 +8,10 @@ namespace MemoryGame
 {
     public class Client
     {
+        public void Send(Message message)
+        {
+            throw new NotImplementedException();
+        }
     }
+
 }

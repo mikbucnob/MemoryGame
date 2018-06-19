@@ -8,7 +8,7 @@ namespace MemoryGame
 {
     public class Server
     {
-        public void Send(Message placeCardMessage)
+        public void Send(Message message)
         {
             throw new NotImplementedException();
         }
